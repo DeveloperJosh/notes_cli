@@ -1,9 +1,8 @@
 use serde_derive::{Deserialize, Serialize};
-use serde_json::{Value, to_writer_pretty, from_reader};
+use serde_json::{to_writer_pretty, from_reader};
 use snap_cli::{app::App, command::Command};
 use uuid::Uuid;
-use std::fs::{File, OpenOptions};
-use std::io::{Write, Read};
+use std::fs::OpenOptions;
 use chrono::{Utc, DateTime};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -37,7 +36,7 @@ fn main() {
                     };
 
                     // Open the file in read mode
-                    let mut file = OpenOptions::new().read(true).open("notes.json").expect("Unable to open file");
+                    let file = OpenOptions::new().read(true).open("notes.json").expect("Unable to open file");
 
                     // Read the existing notes
                     let mut notes: Vec<Note> = from_reader(&file).unwrap_or_else(|_| Vec::new());
@@ -57,7 +56,7 @@ fn main() {
                 .about("List all notes in the system database")
                 .execute(|_matches| {
                     // Open the file in read mode
-                    let mut file = OpenOptions::new().read(true).open("notes.json").expect("Unable to open file");
+                    let file = OpenOptions::new().read(true).open("notes.json").expect("Unable to open file");
 
                     // Read the existing notes
                     let notes: Vec<Note> = from_reader(&file).unwrap_or_else(|_| Vec::new());
@@ -80,7 +79,7 @@ fn main() {
                     std::io::stdin().read_line(&mut id).unwrap();
 
                     // Open the file in read mode
-                    let mut file = OpenOptions::new().read(true).open("notes.json").expect("Unable to open file");
+                    let file = OpenOptions::new().read(true).open("notes.json").expect("Unable to open file");
 
                     // Read the existing notes
                     let mut notes: Vec<Note> = from_reader(&file).unwrap_or_else(|_| Vec::new());

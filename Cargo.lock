@@ -207,9 +207,9 @@ dependencies = [
 
 [[package]]
 name = "snap_cli"
-version = "0.1.4"
+version = "2.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "62073e0878b2458a3994e53bcf090dc707526c2158b7c4275c5e6016429a4ef5"
+checksum = "d55da681be25986e1722e8e459278b8df4ef0453c0135c10edbc58695a5702d4"
 dependencies = [
  "thiserror",
 ]
