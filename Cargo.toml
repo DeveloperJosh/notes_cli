@@ -4,9 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+rusqlite = { version = "0.31", features = ["bundled"] }
 snap_cli = "2.0.2"
-uuid = { version = "0.8", features = ["v4"] }
-serde = "1.0"
 serde_json = "1.0"
 serde_derive = "1.0"
+dialoguer = "0.10.2"
+serde = { version = "1.0", features = ["derive"] }
 chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.1", features = ["serde", "v4"] }
